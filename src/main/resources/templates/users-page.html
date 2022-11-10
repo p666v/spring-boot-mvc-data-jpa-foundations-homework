@@ -1,0 +1,28 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>users</title>
+</head>
+<body>
+<h1>Участники клуба</h1>
+
+<ul>
+    <li> <a href="pets">ссылка на питомцев</a> </li>
+</ul>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Pet</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.name}">The Best Name</td>
+        <td th:text="${user.age}">The Best Age</td>
+        <td th:text="${user.pet}">The Best Pet</td>
+    </tr>
+</table>
+</body>
+
+</html>
