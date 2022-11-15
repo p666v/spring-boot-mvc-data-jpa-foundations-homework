@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Add users</title>
+</head>
+<body>
+
+<form id="add-users-form" th:action="@{/users/add}" th:method="post" action="add-users-page.html">
+    <h1>Pet Info:</h1>
+
+    <div class="row">
+        <p>
+        <label for="name-input">Name:</label>
+        <input id="name-input" name="name" type="text" placeholder="Введите имя" />
+        </p>
+
+        <p>
+        <label for="name-age">Age:</label>
+        <input id="name-age" name="age" type="text" placeholder="Введите возраст" />
+        </p>
+
+        <p>
+        <label for="name-pet">Pet:</label>
+        <input id="name-pet" name="pet" type="text" placeholder="Введите питомца" />
+        </p>
+
+<!--        <p>-->
+<!--            <label for="name-pet">Pet:</label>-->
+<!--            <select id="name-pet" name="breed">-->
+<!--                <option value="Dog">Dog</option>-->
+<!--                <option value="Cat">Cat</option>-->
+<!--            </select>-->
+<!--        </p>-->
+
+
+
+
+        <input type="submit" value="Добавить"/>
+    </div>
+
+
+
+
+</form>
+
+</body>
+</html>

@@ -11,15 +11,13 @@ public class PetDto {
     private String breed;
 
     public static Pet fromDto(PetDto petDto) {
-        long id = Long.parseLong(petDto.id);
-
-        return new Pet(id, petDto.breed);
+        if (petDto.id == null){
+            petDto.id = "0";
+        }
+        return new Pet(Long.parseLong(petDto.id), petDto.breed);
     }
 
     public static PetDto toDto(Pet pet) {
-        String id = String.valueOf(pet.getId());
-        String breed = pet.getBreed();
-
-        return new PetDto(id, breed);
+        return new PetDto(String.valueOf(pet.getId()), pet.getBreed());
     }
 }

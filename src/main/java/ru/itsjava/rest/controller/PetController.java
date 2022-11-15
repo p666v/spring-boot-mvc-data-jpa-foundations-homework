@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import ru.itsjava.domain.Pet;
 import ru.itsjava.rest.dto.PetDto;
 import ru.itsjava.service.PetService;
@@ -27,5 +29,22 @@ public class PetController {
 
         model.addAttribute("pets", petDtos);
         return "pets-page";
+    }
+
+    @GetMapping("pets/{id}")
+    public String getPage(@PathVariable("id") long id, Model model) {
+        model.addAttribute("pets", PetDto.toDto(petService.findById(id)));
+        return "pets-page";
+    }
+
+    @GetMapping("pets/add")
+    public String addPage() {
+        return "add-pets-page";
+    }
+
+    @PostMapping("pets/add")
+    public String afterAddPage(PetDto petDto) {
+        petService.createPet(PetDto.fromDto(petDto));
+        return "redirect:/";
     }
 }
