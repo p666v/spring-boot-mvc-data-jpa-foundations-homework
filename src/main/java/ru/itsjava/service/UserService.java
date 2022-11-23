@@ -5,18 +5,15 @@ import ru.itsjava.domain.User;
 import java.util.List;
 
 public interface UserService {
-    User findById(long id);
-
-    List<User> getAllUsers();
 
     void createUser(User user);
 
-    void printUser(String name);
+    List<User> getAllUsers();
 
-    void changeUser(String oldName, String updateName);
+    void updateUser(User user);
 
-    void deleteUserById(long id);
+    void deleteUser(User user);
 
-//    void printAllUsers();
+    User getUserById(long id);
 
 }

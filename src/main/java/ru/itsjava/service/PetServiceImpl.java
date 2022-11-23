@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itsjava.domain.Pet;
 import ru.itsjava.repository.PetRepository;
+import ru.itsjava.repository.UserRepository;
 
 import java.util.List;
 
@@ -12,11 +13,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PetServiceImpl implements PetService {
     private final PetRepository petRepository;
+    private final UserRepository userRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
-    public Pet findById(long id) {
-        return petRepository.findById(id).get();
+    public void createPet(Pet pet) {
+        petRepository.save(pet);
     }
 
     @Transactional(readOnly = true)
@@ -27,29 +29,21 @@ public class PetServiceImpl implements PetService {
 
     @Transactional
     @Override
-    public void createPet(Pet pet) {
+    public void updatePet(Pet pet) {
         petRepository.save(pet);
+    }
+
+    @Transactional
+    @Override
+    public void deletePet(Pet pet) {
+        userRepository.deleteAllByPet(pet);
+        petRepository.delete(pet);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public void printPet(String breed) {
-        Pet pet = petRepository.getByBreed(breed).get();
-        System.out.println(pet);
+    public Pet getPetById(long id) {
+        return petRepository.findById(id).get();
     }
 
-    @Transactional
-    @Override
-    public void changePet(String oldBreed, String updateBreed) {
-        Pet pet = petRepository.getByBreed(oldBreed).get();
-        pet.setBreed(updateBreed);
-        petRepository.save(pet);
-        System.out.println("Successfully saved!");
-    }
-
-    @Transactional
-    @Override
-    public void deletePetById(long id) {
-        petRepository.deleteById(id);
-    }
 }

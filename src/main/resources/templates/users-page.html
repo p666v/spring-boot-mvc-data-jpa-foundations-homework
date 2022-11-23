@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>users</title>
@@ -7,22 +7,38 @@
 <body>
 <h1>Участники клуба</h1>
 
-<ul>
-    <li> <a href="pets">ссылка на питомцев</a> </li>
-</ul>
-
 <table border="1">
+    <caption><b>Users</b></caption>
+
+    <thead>
     <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Pet</th>
+        <th>ID</th> <th>Имя</th> <th>Возраст</th> <th>Питомец</th> <th>Изменить</th> <th>Удалить</th>
     </tr>
+    </thead>
+
+    <tbody>
     <tr th:each="user: ${users}">
-        <td th:text="${user.name}">The Best Name</td>
-        <td th:text="${user.age}">The Best Age</td>
-        <td th:text="${user.pet}">The Best Pet</td>
+        <td th:text="${user.id}">The User Id</td>
+        <td th:text="${user.name}">The User Name</td>
+        <td th:text="${user.age}">The User Age</td>
+        <td th:text="${user.pet}">The User Pet</td>
+        <td>
+            <a th:href="@{/users/{id}/edit(id=${user.id})}" href="edit-users-page.html">Update</a>
+        </td>
+        <td>
+            <a th:href="@{/users/{id}/delete(id=${user.id})}" href="delete-users-page.html">Delete</a>
+        </td>
     </tr>
+    </tbody>
 </table>
+
+<p>
+    <a th:href="@{/users/add}" href="add-users-page.html">Добавить нового участника</a>
+</p>
+
+<p>
+    <a th:href="@{/pets}" href="pets-page.html">Домашние животные</a>
+</p>
 </body>
 
 </html>

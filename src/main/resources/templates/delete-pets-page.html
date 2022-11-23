@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Delete pet</title>
+</head>
+<body>
+
+<form id="delete-form" th:action="@{/pets/{id}/delete(id=${petDto.id})}" th:method="post" action="delete-pets-page.html">
+    <h1>Pet</h1>
+
+    <div class="row">
+        <label for="breed-input">Breed:</label>
+        <input id="breed-input" name="breed" type="text" readonly="readonly" th:value="${petDto.breed}" value="Default Breed"/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Delete</button>
+    </div>
+</form>
+
+</body>

@@ -13,10 +13,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
-    public User findById(long id) {
-        return userRepository.findById(id).get();
+    public void createUser(User user) {
+        userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
@@ -27,41 +27,20 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void createUser(User user) {
+    public void updateUser(User user) {
         userRepository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(User user) {
+        userRepository.delete(user);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public void printUser(String name) {
-        User user = userRepository.findByName(name).get();
-        System.out.println(user);
+    public User getUserById(long id) {
+        return userRepository.findById(id).get();
     }
-
-    @Transactional
-    @Override
-    public void changeUser(String oldName, String updateName) {
-        User user = userRepository.findByName(oldName).get();
-        user.setName(updateName);
-        userRepository.save(user);
-        System.out.println("Successfully saved!");
-    }
-
-    @Transactional
-    @Override
-    public void deleteUserById(long id) {
-        userRepository.deleteById(id);
-    }
-
-//    @Transactional(readOnly = true)
-//    @Override
-//    public void printAllUsers() {
-//        System.out.println("Участники клуба любителей домашних животных:");
-//        List<User> userList = userRepository.findAll();
-//        for (User users : userList) {
-//            System.out.println(users);
-//        }
-//    }
-
 
 }

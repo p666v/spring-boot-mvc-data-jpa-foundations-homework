@@ -5,16 +5,15 @@ import ru.itsjava.domain.Pet;
 import java.util.List;
 
 public interface PetService {
-    Pet findById(long id);
-
-    List<Pet> getAllPets();
 
     void createPet(Pet pet);
 
-    void printPet(String name);
+    List<Pet> getAllPets();
 
-    void changePet(String oldName, String updateName);
+    void updatePet(Pet pet);
 
-    void deletePetById(long id);
+    void deletePet(Pet pet);
+
+    Pet getPetById(long id);
 
 }

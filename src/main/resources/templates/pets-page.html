@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>pets</title>
 </head>
 <body>
 <h1>Питомцы</h1>
 
-<ul>
-    <li> <a href="users">ссылка на участников клуба</a> </li>
-</ul>
-
 <table border="1">
+    <caption><b>Breed</b></caption>
+
+    <thead>
     <tr>
-        <th>Breed</th>
+        <th>ID</th> <th>Питомец</th> <th>Изменить</th> <th>Удалить</th>
     </tr>
+    </thead>
+
+    <tbody>
     <tr th:each="pet: ${pets}">
-        <td th:text="${pet.breed}">The Best Breed</td>
+        <td th:text="${pet.id}">The Pet Id</td>
+        <td th:text="${pet.breed}">The Pet Breed</td>
+        <td>
+            <a th:href="@{/pets/{id}/edit(id=${pet.id})}" href="edit-pets-page.html">Update</a>
+        </td>
+        <td>
+            <a th:href="@{/pets/{id}/delete(id=${pet.id})}" href="delete-pets-page.html">Delete</a>
+        </td>
     </tr>
+    </tbody>
 </table>
+
+<p>
+    <a th:href="@{/pets/add}" href="add-pets-page.html">Добавить нового питомца</a>
+</p>
+
+<p>
+    <a th:href="@{/users}" href="users-page.html">Участники клуба</a>
+</p>
 </body>
 
 </html>
