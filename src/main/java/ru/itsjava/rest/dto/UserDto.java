@@ -14,19 +14,19 @@ public class UserDto {
     private String pet;
 
     public static User fromDto(UserDto userDto) {
-        if (userDto.id == null){
+        if (userDto.id == null) {
             userDto.id = "0";
         }
-        return new User(Long.parseLong(userDto.id)
-                , userDto.name
-                , Integer.parseInt(userDto.age)
-                , new Pet(0L, userDto.pet));
+        return new User(Long.parseLong(userDto.id),
+                userDto.name,
+                Integer.parseInt(userDto.age),
+                new Pet(0L, userDto.pet));
     }
 
     public static UserDto toDto(User user) {
-        return new UserDto(String.valueOf(user.getId())
-                , user.getName()
-                , String.valueOf(user.getAge())
-                , user.getPet().getBreed());
+        return new UserDto(String.valueOf(user.getId()),
+                user.getName(),
+                String.valueOf(user.getAge()),
+                user.getPet().getBreed());
     }
 }

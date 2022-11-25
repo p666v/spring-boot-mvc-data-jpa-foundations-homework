@@ -41,12 +41,6 @@ public class UserController {
         return "users-page";
     }
 
-//    @GetMapping("users/add")
-//    public String addPage() {
-//        return "add-users-page";
-//    }
-
-
     @GetMapping("users/add")
     public String addPage(Model model) {
         List<Pet> allPets = petService.getAllPets();
@@ -59,12 +53,6 @@ public class UserController {
         model.addAttribute("pets", petDtos);
         return "add-users-page";
     }
-
-
-
-
-
-
 
     @PostMapping("users/add")
     public String afterAddPage(UserDto userDto) {

@@ -73,5 +73,4 @@ public class PetController {
         petService.updatePet(PetDto.fromDto(petDto));
         return "redirect:/pets";
     }
-
 }
