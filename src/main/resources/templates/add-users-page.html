@@ -12,29 +12,22 @@
     <div class="row">
         <p>
             <label for="name-input">Name:</label>
-            <input id="name-input" name="name" type="text" placeholder="Введите имя"/>
+            <input id="name-input" name="name" type="text" placeholder="Введите имя" required/>
         </p>
     </div>
 
     <div class="row">
         <p>
             <label for="name-age">Age:</label>
-            <input id="name-age" name="age" type="text" placeholder="Введите возраст"/>
+            <input id="name-age" name="age" type="number" placeholder="Введите возраст" required min="18" max="100"/>
         </p>
     </div>
-
-<!--    <div class="row">-->
-<!--        <p>-->
-<!--            <label for="name-pet">Pet:</label>-->
-<!--            <input id="name-pet" name="pet" type="text" placeholder="Введите питомца"/>-->
-<!--        </p>-->
-<!--    </div>-->
 
     <div class="row">
         <p>
             <label for="name-pet">Pet:</label>
             <select id="name-pet" name="pet" required>
-                <option disabled selected>--Выберите питомца--</option>
+                <option value="">--Выберите питомца--</option>
                 <option th:text="${pet.breed}" th:each="pet: ${pets}" th:value="${pet.breed}"></option>
             </select>
         </p>

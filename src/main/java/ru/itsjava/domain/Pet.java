@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@SuppressWarnings("com.haulmont.jpb.LombokDataInspection")
 @Entity(name = "pets")
 @Data
 @AllArgsConstructor

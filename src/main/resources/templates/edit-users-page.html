@@ -16,12 +16,12 @@
 
     <div class="row">
         <label for="name-input">Name:</label>
-        <input id="name-input" name="name" type="text" th:value="${userDto.name}" value="Default Name"/>
+        <input id="name-input" name="name" type="text" th:value="${userDto.name}" value="Default Name" required/>
     </div>
 
     <div class="row">
         <label for="age-input">Age:</label>
-        <input id="age-input" name="age" type="text" th:value="${userDto.age}" value="Default Age"/>
+        <input id="age-input" name="age" type="number" th:value="${userDto.age}" value="Default Age" required min="18" max="100"/>
     </div>
 
     <div class="row">
