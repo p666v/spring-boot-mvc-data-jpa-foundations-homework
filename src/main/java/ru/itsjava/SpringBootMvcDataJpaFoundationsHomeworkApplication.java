@@ -8,6 +8,8 @@ public class SpringBootMvcDataJpaFoundationsHomeworkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootMvcDataJpaFoundationsHomeworkApplication.class, args);
+
+
 	}
 
 }

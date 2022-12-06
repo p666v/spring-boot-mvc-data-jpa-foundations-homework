@@ -3,6 +3,7 @@ package ru.itsjava.service;
 import ru.itsjava.domain.Pet;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PetService {
 
@@ -14,5 +15,5 @@ public interface PetService {
 
     void deletePet(Pet pet);
 
-    Pet getPetById(long id);
+    Optional<Pet> getPetById(long id);
 }

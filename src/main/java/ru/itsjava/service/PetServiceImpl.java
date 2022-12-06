@@ -8,6 +8,7 @@ import ru.itsjava.repository.PetRepository;
 import ru.itsjava.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,8 +43,8 @@ public class PetServiceImpl implements PetService {
 
     @Transactional(readOnly = true)
     @Override
-    public Pet getPetById(long id) {
-        return petRepository.findById(id).get();
+    public Optional<Pet> getPetById(long id) {
+        return petRepository.findById(id);
     }
 
 }

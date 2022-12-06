@@ -12,6 +12,7 @@ import ru.itsjava.service.PetService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,7 +34,8 @@ public class PetController {
 
     @GetMapping("pets/{id}")
     public String getPage(@PathVariable("id") long id, Model model) {
-        model.addAttribute("pets", PetDto.toDto(petService.getPetById(id)));
+        Optional<Pet> petById = petService.getPetById(id);
+        petById.ifPresent(pet -> model.addAttribute("pets", PetDto.toDto(pet)));
         return "pets-page";
     }
 
@@ -50,8 +52,8 @@ public class PetController {
 
     @GetMapping("pets/{id}/delete")
     public String deletePage(@PathVariable("id") long id, Model model) {
-        Pet petById = petService.getPetById(id);
-        model.addAttribute("petDto", PetDto.toDto(petById));
+        Optional<Pet> petById = petService.getPetById(id);
+        petById.ifPresent(pet -> model.addAttribute("petDto", PetDto.toDto(pet)));
         return "delete-pets-page";
     }
 
@@ -63,8 +65,8 @@ public class PetController {
 
     @GetMapping("pets/{id}/edit")
     public String editPage(@PathVariable("id") long id, Model model) {
-        Pet petById = petService.getPetById(id);
-        model.addAttribute("petDto", PetDto.toDto(petById));
+        Optional<Pet> petById = petService.getPetById(id);
+        petById.ifPresent(pet -> model.addAttribute("petDto", PetDto.toDto(pet)));
         return "edit-pets-page";
     }
 

@@ -15,6 +15,7 @@ import ru.itsjava.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -37,7 +38,8 @@ public class UserController {
 
     @GetMapping("users/{id}")
     public String getPage(@PathVariable("id") long id, Model model) {
-        model.addAttribute("users", UserDto.toDto(userService.getUserById(id)));
+        Optional<User> userById = userService.getUserById(id);
+        userById.ifPresent(user -> model.addAttribute("users", UserDto.toDto(user)));
         return "users-page";
     }
 
@@ -62,8 +64,8 @@ public class UserController {
 
     @GetMapping("users/{id}/delete")
     public String deletePage(@PathVariable("id") long id, Model model) {
-        User userById = userService.getUserById(id);
-        model.addAttribute("userDto", UserDto.toDto(userById));
+        Optional<User> userById = userService.getUserById(id);
+        userById.ifPresent(user -> model.addAttribute("userDto", UserDto.toDto(user)));
         return "delete-users-page";
     }
 
@@ -75,8 +77,8 @@ public class UserController {
 
     @GetMapping("users/{id}/edit")
     public String editPage(@PathVariable("id") long id, Model model) {
-        User userById = userService.getUserById(id);
-        model.addAttribute("userDto", UserDto.toDto(userById));
+        Optional<User> userById = userService.getUserById(id);
+        userById.ifPresent(user -> model.addAttribute("userDto", UserDto.toDto(user)));
         return "edit-users-page";
     }
 

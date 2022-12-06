@@ -3,6 +3,7 @@ package ru.itsjava.service;
 import ru.itsjava.domain.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -14,5 +15,5 @@ public interface UserService {
 
     void deleteUser(User user);
 
-    User getUserById(long id);
+    Optional<User> getUserById(long id);
 }
